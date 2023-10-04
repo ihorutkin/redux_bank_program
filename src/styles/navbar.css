@@ -1,0 +1,21 @@
+.navbar{
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    gap: 2rem;
+    background: #3cb371;
+    padding: 1.5rem;
+}
+
+.item{
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    transition: all .3s linear;
+
+}
+
+.item:hover{
+    transform: scale(1.1);
+    transition: all .3s linear;
+}

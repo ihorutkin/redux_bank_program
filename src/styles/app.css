@@ -1,0 +1,56 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    gap: 1rem;
+}
+
+.input-field{
+    width: 500px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.money-btn{
+    width: 200px;
+    height: 100px;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.add{
+    background: #3cb371;
+    transition: all .1s linear;
+}
+
+.add:hover{
+    background: #32955f;
+    transition: all .1s linear;
+}
+
+.get{
+    background: #ff0000;
+    transition: all .1s linear;
+}
+
+.get:hover{
+    background: #c20303;
+    transition: all .1s linear;
+}
+
+.btn-section{
+    display: flex;
+    gap: 3rem;
+}
