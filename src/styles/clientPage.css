@@ -1,0 +1,75 @@
+.user_container{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    padding: 2rem 10rem;
+    gap: 2rem;
+}
+
+.client_img{
+    background: #edf0f1;
+    height: 400px;
+    width: 300px;
+}
+
+.border{
+    background: #edf0f1;
+    padding: 1rem;
+}
+
+.name{
+    font-size: 32px;
+    font-weight: normal;
+    margin: 0;
+}
+
+.more_info_block{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.username{
+    display: flex;
+    flex: 1 1 0%;
+    flex-basis: 40%;
+    margin-right: 1rem;
+}
+
+.email{
+    display: flex;
+    flex: 1 1 0%;
+    flex-basis: 40%;
+}
+
+.phone{
+    display: flex;
+    flex: 1 1 0%;
+    flex-basis: 40%;
+    margin-right: 1rem;
+    margin-top: 0;
+}
+
+.website{
+    display: flex;
+    flex: 1 1 0%;
+    flex-basis: 40%;
+    margin-top: 0;
+}
+
+.address_block{
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    line-height: 0;
+    flex: 1 1 0%;
+    flex-basis: 40%;
+    margin-right: 1rem;
+}
+
+.company_block{
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    line-height: 0;
+    flex: 1 1 0%;
+    flex-basis: 40%;
+}

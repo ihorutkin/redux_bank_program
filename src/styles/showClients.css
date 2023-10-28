@@ -1,0 +1,44 @@
+.client_block{
+    padding: 0 2rem;
+}
+
+.show_client_btn{
+    width: 200px;
+    height: 40px;
+    background: #edf0f1;
+    border: none;
+    margin-bottom: 2rem;
+    cursor: pointer;
+}
+
+.clients_list{  
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: auto;
+}
+
+.btn_block{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.client_item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    background: #edf0f1;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+    transition: all  .3s linear;
+}
+
+.client_item:hover{
+    transform: scale(1.1);
+    transition: all  .3s linear;
+}

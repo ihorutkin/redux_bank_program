@@ -4,7 +4,7 @@
     justify-content: center;
     gap: 2rem;
     background: #3cb371;
-    padding: 1.5rem;
+    padding: 1.5rem 0;
 }
 
 .item{
