@@ -11,6 +11,39 @@ export default function ShowClients(){
     const dispatch = useDispatch()
     const clients = useSelector(state => state.customer.clients)
     console.log(clients)
+    let contribution = {}
+    let historyOfContrybution = []
+    let data = []
+    let value = []
+    let endData = Date.now()
+    let startData = endData - 2678400000
+    let interval = endData - startData
+
+    const getRandomMoney = () => {
+        return Math.floor((Math.random() * 10000) + 1)
+    }
+    
+    const getRandomDate  = () => {
+        return Math.floor((Math.random() * interval) + 1)
+    }
+
+    for(let i = 0; i < clients.length; i++){
+        data.push(new Date(startData + getRandomDate()).toLocaleDateString())
+        value.push(getRandomMoney())
+    }
+
+    console.log('Data: ', data)
+    console.log('Value: ', value)
+
+    const createHistoryOfContribution = () => {
+        for(let i = 0; i < clients.length; i++){
+            historyOfContrybution.push({data: data[i], value: value[i]})
+        }
+        return historyOfContrybution
+    }
+    createHistoryOfContribution()
+
+    console.log('History of contribution: ', historyOfContrybution)
 
     return (
         <div className='container'>
@@ -25,11 +58,15 @@ export default function ShowClients(){
                 ? 
                 <div className="clients_list">
                     {
-                        clients.map(elem => (
-                            <Link to={`/${elem.id}`} state={{ state: elem }} key={elem.id} className="client_item">
-                                <div>{ elem.name }</div>
-                            </Link>
-                        ))
+                        clients.map(elem => {
+                            return (
+                                elem.money = getRandomMoney(),
+                                elem.date = getRandomDate(),
+                                elem.historyOfContrybution = historyOfContrybution,
+                                <Link to={`/${elem.id}`} state={{ state: elem }} key={elem.id} className="client_item">
+                                    <div>{ elem.name }</div>
+                                </Link>)
+                        })
                     }
                 </div>
                 : 
