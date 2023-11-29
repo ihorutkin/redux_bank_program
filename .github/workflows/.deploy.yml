@@ -1,0 +1,57 @@
+name: Deploy of React bank project
+on: [push]
+  jobs:
+    test: 
+      runs-on: ubuntu-latest
+      steps: 
+        - name: Get the repository code
+          uses: actions/checkout@v4
+        - name: Cache dependencies
+          uses: actions/cache@v3
+          with: 
+            path: ~/.npm
+            key: node-modules-${{ hashFiles('**/package-lock.json') }}
+        - name: Install dependencies
+          run: npm install
+        - name: Test application
+          run: npm run test
+    lint: 
+      runs-on: ubuntu-latest
+      steps: 
+        - name: Get the repository code
+          uses: actions/checkout@v4
+        - name: Cache dependencies
+          uses: actions/cache@v3
+          with: 
+            path: ~/.npm
+            key: node-modules-${{ hashFiles('**/package-lock.json') }}
+        - name: Install dependencies
+          run: npm install
+        - name: Lint application
+          run: npm run lint
+    build: 
+      needs: [test, lint]
+      continue-on-error: true
+      strategy: 
+        matrix: 
+          node-version: [14, 16]
+          os: [ubuntu-latest, windows-latest]
+      runs-on: ${{ matrix.os }}
+      steps: 
+        - name: Get the repository code
+          uses: actions/checkout@v4
+        - name: Install Node js
+          uses: actions/setup-node@v4
+          with:
+            node-version: ${{ matrix.node-version }}
+        - name: Cache dependencies
+          uses: actions/cache@v3
+          with: 
+            path: ~/.npm
+            key: node-modules-${{ hashFiles('**/package-lock.json') }}
+        - name: Install dependencies
+          run: npm install
+        - name: build application
+          run: npm run build
+        - name: Deploy
+          run: echo Deploy was succesfully
