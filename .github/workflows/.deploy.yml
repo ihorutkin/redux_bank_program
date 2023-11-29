@@ -1,5 +1,5 @@
 name: Deploy of React bank project
-on: [push]
+on: push
   jobs:
     test: 
       runs-on: ubuntu-latest
