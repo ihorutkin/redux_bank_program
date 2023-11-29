@@ -30,7 +30,6 @@ jobs:
   #     - name: Lint application
   #       run: npm run lint
   build: 
-    needs: [test, lint]
     continue-on-error: true
     strategy: 
       matrix: 
