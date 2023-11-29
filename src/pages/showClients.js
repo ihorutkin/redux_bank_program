@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../components/navbar";
 import '../styles/app.css'
 import { useDispatch, useSelector } from "react-redux";
@@ -10,8 +10,11 @@ import { Link } from "react-router-dom";
 export default function ShowClients(){
     const dispatch = useDispatch()
     const clients = useSelector(state => state.customer.clients)
+
+    useEffect(() => {
+        dispatch(addAllClients())
+    }, [])
     console.log(clients)
-    let contribution = {}
     let historyOfContrybution = []
     let data = []
     let value = []
@@ -36,7 +39,7 @@ export default function ShowClients(){
     console.log('Value: ', value)
 
     const createHistoryOfContribution = () => {
-        for(let i = 0; i < clients.length; i++){
+        for(let i = 0; i < 10; i++){
             historyOfContrybution.push({data: data[i], value: value[i]})
         }
         return historyOfContrybution
@@ -50,7 +53,7 @@ export default function ShowClients(){
             <Navbar />
             <div className="client_block">
             <div className="btn_block">
-                <button onClick={() => dispatch(addAllClients())} className="show_client_btn">Show all clients in our region</button>
+                {/* <button onClick={() => dispatch(addAllClients())} className="show_client_btn">Show all clients in our region</button> */}
                 <button className="show_client_btn">Show statistics in our region</button>
                 <button className="show_client_btn">Show graphics in our region</button>
             </div>

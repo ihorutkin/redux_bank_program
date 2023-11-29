@@ -1,19 +1,27 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import '../styles/app.css'
 import '../styles/clientPage.css'
 import Navbar from "../components/navbar";
 import { useLocation } from "react-router-dom";
 
 import Chart from 'chart.js/auto';
+import ClientChart from "../components/clientChart";
 
 export default function ClientPage(){
     const state = useLocation()
     console.log(state)
     const path = state.state.state
 
-    let canvas  = window.document.getElementById('canvas')
-    let context = canvas.getContext('2d')
-    console.log(context)
+    const canvasRef = useRef(null)
+    let chart = null
+    const [context, setContext] = useState(null)
+
+    useEffect(() => {
+        let canvas  = canvasRef.current
+        setContext(canvas.getContext('2d'))
+    }, [])
+    console.log('Context: ', context)
+
 
     let xData = []
     let yData = []
@@ -21,18 +29,19 @@ export default function ClientPage(){
     let historyOfContrybution = path.historyOfContrybution
 
     function createLineChart(xData, yData){
-        let gradient = context.createLinearGradient(0, 0, 0, window.screen.width/2)
-        gradient.addColorStop(0, 'rgba(0, 204, 102, 0.8)')
-        gradient.addColorStop(1, 'rgba(0, 204, 102, 0.001)')
-        canvas.width = 600
-        canvas.heigth = 400
+    console.log('Context 2: ', context)
+
+        // let gradient = context.createLinearGradient(0, 0, 0, window.screen.width/2)
+        // gradient.addColorStop(0, 'rgba(0, 204, 102, 0.8)')
+        // gradient.addColorStop(1, 'rgba(0, 204, 102, 0.001)')
         let data = {
             labels: xData,
             datasets: [{
-                label: 'Chart',
+                label: 'Contribution of clients',
                 data: yData,
                 fill: true,
-                backgroundColor: gradient
+                // backgroundColor: gradient
+                tension: 0.2
             }]
         }
         let xScaleConfig = {}
@@ -47,8 +56,7 @@ export default function ClientPage(){
                 }
             }
         }
-        let chart = new Chart(context, config)
-        chart.update()
+        chart = new Chart(context, config)
     }
 
     for(let i = 0; i < historyOfContrybution.length; i++){
@@ -89,6 +97,9 @@ export default function ClientPage(){
                     </div>
                 </article>
             </section>
+            <div>
+                <canvas ref={canvasRef}></canvas>
+            </div>
         </div>
     )
 }
