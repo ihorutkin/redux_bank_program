@@ -46,8 +46,6 @@ export default function ShowChart(){
     let xData = []
     let yData = []
 
-    let pauseMode = false
-
     // const realTimeAnimation = (xData, yData, data) => {
     //     let i = 20
     //     let interval = setInterval(() => {

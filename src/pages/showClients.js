@@ -13,7 +13,7 @@ export default function ShowClients(){
 
     useEffect(() => {
         dispatch(addAllClients())
-    }, [])
+    })
     console.log(clients)
     let historyOfContrybution = []
     let data = []
